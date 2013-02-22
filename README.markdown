@@ -5,10 +5,16 @@ Welcome to the CocoaHeads Atlanta web site project. The site is currently based 
 
 This is a ground up rebuild of the current [cocoaheadsatlanta.org](http://cocoaheadsatlanta.org) site. 
 
+The project is available on Pivotal Tracker so please request to join if interested in helping: [Project](https://www.pivotaltracker.com/projects/23115).
+
 I. Developer Platform Dependencies
 -------------------------------
 
-At present the project requires a few OS X 10.8 specific gems used for running [RSpec](https://github.com/rspec/rspec-rails) tests via [Guard](https://github.com/guard/guard-rspec).
+Like most projects there have been some dependency choices made for convenience and familarity. However, if you have issue with any of the choices please don't hesitate to suggest alternatives.
+
+For example I chose to use [RSpec](https://github.com/rspec/rspec-rails) as the testing framework, [Guard](https://github.com/guard/guard-rspec) to report spec pass/fail status, [terminal-notifier-guard](https://github.com/Springest/terminal-notifier-guard) for nifty OS X Notification Center integration, and [Factory Girl](https://github.com/thoughtbot/factory\_girl\_rails) for fixture replacement.
+
+**Notice:** A few of these choices are OS X 10.8 specific. So if this causes any issues for anyone please either add the platform specific condtional loading to the Gemfile or post a bug to the [Pivotal Tracker Project](https://www.pivotaltracker.com/projects/23115) and I'll add that. I currently running under the assumption that everyone interested in contributing is already running a Mac with 10.8 installed.
 
 II. Getting Started
 -------------------
@@ -65,8 +71,8 @@ IV. Automated Testing
 
 ### 1. RSpec
 
-It is **required** that [RSpec](https://github.com/rspec/rspec-rails) specs are provided with all [pull requests](https://help.github.com/articles/using-pull-requests) to be considered for inclusion into the official project source code.
+It is **highly recommended** that [RSpec](https://github.com/rspec/rspec-rails) specs are provided with all [pull requests](https://help.github.com/articles/using-pull-requests) to be considered for inclusion into the official project source code.
 
 ### 2. Factory Girl
 
-The project uses [factory\_girl](https://github.com/thoughtbot/factory\_girl\_rails) for fixture replacement so please take some time to familiarize yourself with that if necessary.
+The project uses [Factory Girl](https://github.com/thoughtbot/factory\_girl\_rails) for fixture replacement so please take some time to familiarize yourself with that if necessary.
