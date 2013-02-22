@@ -31,9 +31,9 @@ Begin by copying the configuration file (starting from the root of the project w
 
     cp ./config/examples/application.yml ./config/
 
-Also copy the example database.yml from examples to the config folder. The datebase.yml file is not version controlled for similar reasons, both to protect production database settings and to allow develoers to have some flexibility what database to use.
+Also copy the example database.yml from examples to the config folder. The datebase.yml file is not version controlled for similar reasons, both to protect the production database settings, and to allow developers to have some flexibility in choosing a development database.
 
-Again from the root of the project:
+Again, from the root of the project run:
 
     cp ./config/examples/database.yml ./config/
 
