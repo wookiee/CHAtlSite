@@ -1,0 +1,20 @@
+#auth_links {
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    display: inline-block;
+    padding: 2px 8px;
+    border: 1px solid black;
+    background-color: #281400;
+    border-radius: 6px;
+    a {
+      color: #eee;
+      text-decoration: none;
+      &:hover {
+        color: #ffe6b4;
+      }
+    }
+  }
+}

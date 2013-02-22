@@ -1,0 +1,225 @@
+@import url(http://fonts.googleapis.com/css?family=Actor);
+@import url(http://fonts.googleapis.com/css?family=Lato:300italic);
+
+// Fonts
+$helvetica: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+$lato: "Lato", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+$actor: "Actor", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+
+// Colors
+$near_white: #f2f0f2;
+$deep_brown: #281400;
+$cream: #ffeecc;
+$beige: #ffe6b4;
+$dark_beige: #cbb587;
+
+body {
+  font-family: $helvetica;
+  font-size: 16px;
+  background-color: $near_white;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 0;
+}
+
+.user_select_off {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+#page_container {
+  position: relative;
+  width: 950px;
+  margin: 1em auto;
+}
+
+#page_header {
+  position: relative;
+  height: 80px;
+  padding: 0.5em 1em 1em 1em;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: $deep_brown;
+
+  background-image: linear-gradient(bottom, rgb(38,19,0) 34%, rgb(64,40,15) 67%);
+  background-image: -o-linear-gradient(bottom, rgb(38,19,0) 34%, rgb(64,40,15) 67%);
+  background-image: -moz-linear-gradient(bottom, rgb(38,19,0) 34%, rgb(64,40,15) 67%);
+  background-image: -webkit-linear-gradient(bottom, rgb(38,19,0) 34%, rgb(64,40,15) 67%);
+  background-image: -ms-linear-gradient(bottom, rgb(38,19,0) 34%, rgb(64,40,15) 67%);
+
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.34, rgb(38,19,0)),
+    color-stop(0.67, rgb(64,40,15))
+  );
+}
+
+#page_content {
+  position: relative;
+  background-color: white;
+  border-left: 1px solid $deep_brown;
+  border-right: 1px solid $deep_brown;
+  border-bottom: 1px solid $deep_brown;
+}
+
+.two_column_layout {
+  width: 100%;
+  border-collapse: collapse;
+  td {
+    vertical-align: top;
+  }
+}
+
+#main_content {
+  padding: 0.75em;
+  min-height: 500px;
+}
+
+#page_col_2 {
+  width: 200px;
+  border-left: 1px solid $deep_brown;
+  background-color: $cream; 
+}
+
+#sidebar {
+  padding: 8px;
+  h3 {
+    color: $deep_brown;
+    font-size: 16px;
+    text-decoration: underline;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    a {
+      color: $deep_brown;
+    }
+  }
+  p {
+    margin-top: 0;
+    font-size: 13px;
+  }
+}
+
+#page_footer {
+  margin: 1em 0;
+  font-size: 11px;
+  text-align: center;
+}
+
+.sign_in {
+  position: relative;
+  font-size: 13px;
+  float: right;
+  color: white;
+  a {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      color: $beige;
+      text-decoration: underline;
+    }
+  }
+}
+
+#logo_avatar {
+  float: left;
+  margin: 0.5em 1em 0 0;
+  width: 75px;
+  height: 67px;
+}
+
+#logo_content {
+  position: relative;
+  width: 630px;
+  margin-top: 0.3em;
+}
+
+#logo_text_content {
+  position: relative;
+  left: 0em;
+  text-align: left;
+}
+
+#logo_open_bracket {
+  font-family: $actor;
+  font-size: 45px;
+  color: $dark_beige;
+  margin-right: 0.25em;
+}
+
+#logo_close_bracket {
+  color: $dark_beige;
+  font-family: $actor;
+  font-size: 45px;
+  margin-left: 0.25em;
+}
+
+#logo_cocoaheads {
+  color: $dark_beige;
+  font-family: $actor;
+  font-size: 45px;
+}
+
+#logo_atlanta {
+  color: white;
+  font-family: $lato;
+  font-size: 45px;
+  font-weight: 300;
+  font-style: italic;
+  margin-left: 0.25em;
+}
+
+.logo_subtext {
+  position: relative;
+  top: -0.5em;
+  left: 4.75em;
+  font-family: $lato;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: italic;
+  color: white;
+}
+
+#nav_bar_container {
+  border-bottom: 2px solid $deep_brown;
+  border-left: 1px solid $deep_brown;
+  border-right: 1px solid $deep_brown;
+  background-color: $beige;
+}
+
+#nav_bar {
+  font-weight: bold;
+  color: $deep_brown;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    padding: 4px 0.5em;
+    float: left;
+    border-right: 2px solid $dark_beige;
+    &:hover {
+      background-color: $dark_beige;
+      cursor: pointer;
+    }
+    a {
+      color: $deep_brown;
+      text-decoration: none;
+    }
+  }
+}
+
+.separator {
+  clear: both;
+}

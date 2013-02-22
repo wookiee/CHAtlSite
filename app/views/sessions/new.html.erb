@@ -1,0 +1,10 @@
+<h1>Welcome to CocoaHeads Atlanta</h1>
+<p>For your convenience please choose from any of these authentication services to either sign in or sign up to join CocoaHeads Atlanta. If this is your first time signing in, an account will be created for your automatically. You will be presented with a registration page where you can complete your profile. You will also be able to register for the announcement and chatter mailing lists.</p>
+<ul id="auth_links">
+  <li><%= link_to "Twitter", "/auth/twitter" %></li>
+  <li><%= link_to "Google", "/auth/google_oauth2" %></li>
+  <li><%= link_to "Yahoo!", "/auth/yahoo" %></li>
+  <li><%= link_to "GitHub", "/auth/github" %></li>
+  <li><%= link_to "Verisign", openid_url_path(provider: "verisign",  template: "http://<identity>.pip.verisignlabs.com") %></li>
+  <li><%= link_to "OpenID", openid_url_path(provider: "open_id", template: "http://<identity>") %></li>
+</ul>

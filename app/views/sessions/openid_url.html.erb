@@ -1,0 +1,4 @@
+<%= form_tag("/auth/#{@provider}", {:class => "openid_url_form"}) do -%>
+  <%= text_field_tag :openid_url, @template, size: 60 %>
+  <%= submit_tag "Sign In", :id => "submit", name: "submit" %>
+<% end -%>

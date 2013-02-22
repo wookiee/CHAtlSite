@@ -1,0 +1,11 @@
+<% if current_user -%>
+  <div id="user_bar_action" class="sign_in">
+    <%= link_to "Edit profile", edit_user_path(current_user),
+      { :title => "Create an account" } %> |
+    <%= link_to "Sign out", signout_path %>
+  </div>
+<% else -%>
+  <div id="user_bar_action" class="sign_in">
+    <%= link_to "Sign In or Sign Up", signin_path %>
+  </div>
+<% end -%>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cocoaheads Atlanta - Atlanta, Georgia chapter of CocoaHeads: International</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="page_container">
+    <div id="page_header">
+      <%= render :partial => 'shared/user_bar' %>
+      <div id="logo_avatar" class="user_select_off">
+        <%= image_tag "cocoaheads_mug.png", alt: "CocoaHeads Mug Logo" %>
+      </div>
+      <div id="logo_content">
+        <div id="logo_text_content" class="user_select_off">
+          <span id="logo_open_bracket">[</span><!--
+          --><span id="logo_cocoaheads">CocoaHeads:</span><!--
+          --><span id="logo_atlanta">Atlanta</span><!--
+          --><span id="logo_close_bracket">]</span>
+          <div class="logo_subtext">
+            Atlanta, Georgia chapter of CocoaHeads: International
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="nav_bar_container">
+      <ul id="nav_bar">
+        <li><%= link_to "Meetings", "#" %></li>
+        <li><%= link_to "Venues", "#" %></li>
+      </ul>
+      <div class="separator"></div>
+    </div>
+    <div id="page_content">
+      <table class="two_column_layout">
+        <tr>
+          <td id="page_col_1">
+            <div id="main_content">
+            <%= yield %>
+          </div>
+          </td>
+          <td id="page_col_2">
+            <%= render :partial => 'shared/sidebar' %>
+          </td>
+        </tr>
+      </table>
+      <div class="separator"></div>
+    </div>
+    <div id="page_footer">
+      <div>CocoaHeads Atlanta is a chapter of the <a href="http://cocoaheads.org">CocoaHeads: International Cocoa Group</a>.</div>
+      <div>For more information please contact the Atlanta group organizer at: <a href="mailto:organizer@CocoaHeadsAtlanta.org">organizer@CocoaHeadsAtlanta.org</a></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+defaults: &defaults
+  twitter_key: CONSUMER_KEY
+  twitter_secret: CONSUMER_SECRET
+  github_key: GITHUB_KEY
+  github_secret: GITHUB_SECRET
+  google_key: CLIENT_ID
+  google_secret: CLIENT_SECRET
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
