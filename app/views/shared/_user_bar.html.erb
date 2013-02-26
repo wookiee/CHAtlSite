@@ -1,8 +1,7 @@
 <% if current_user -%>
   <div id="user_bar_action" class="sign_in">
-    <%= link_to "Edit profile", edit_user_path(current_user),
-      { :title => "Create an account" } %> |
-    <%= link_to "Sign out", signout_path %>
+    <%= link_to "Edit profile", edit_user_path(current_user) %> |
+    <%= link_to "Sign out", signout_path, method: :delete %>
   </div>
 <% else -%>
   <div id="user_bar_action" class="sign_in">

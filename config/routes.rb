@@ -1,14 +1,14 @@
 Chatl3::Application.routes.draw do
-  # OmniAuth callbacks
-  match '/auth/:provider/callback', to: 'sessions#create'
-  match '/auth/failure', to: 'sessions#failure'
-  
   # Sessions
-  match "/signup" => "users#new", as: :signup
-  match "/signin" => "sessions#new", as: :signin
-  match "/signout" => "sessions#destroy", as: :signout
-  match "/openid_url", to: 'sessions#openid_url'
+  get "/signin" => "sessions#new", as: :signin
+  delete "/signout" => "sessions#destroy", as: :signout
+  get "/openid_url", to: 'sessions#openid_url'
 
+  # OmniAuth callbacks
+  get '/auth/:provider/callback', to: 'sessions#create'
+  post '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/failure', to: 'sessions#failure'
+  
   # Resources
   resources :users
   resources :venues

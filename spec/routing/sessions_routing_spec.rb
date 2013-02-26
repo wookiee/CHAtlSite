@@ -1,5 +1,19 @@
 require 'spec_helper'
 describe "routing to sessions" do
+  it "routes /signin" do
+    expect(:get => "/signin").to route_to(
+      :controller => "sessions",
+      :action => "new"
+    )
+  end
+
+  it "routes /signout" do
+    expect(:delete => "/signout").to route_to(
+      :controller => "sessions",
+      :action => "destroy"
+    )
+  end
+
   it "routes /auth/twitter/callback" do
     expect(:get => "/auth/twitter/callback").to route_to(
       :controller => "sessions",
@@ -51,13 +65,6 @@ describe "routing to sessions" do
     expect(:get => "/auth/failure").to route_to(
       :controller => "sessions",
       :action => "failure"
-    )
-  end
-
-  it "routes /signout" do
-    expect(:get => "/signout").to route_to(
-      :controller => "sessions",
-      :action => "destroy"
     )
   end
 end
