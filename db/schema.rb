@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219002351) do
+ActiveRecord::Schema.define(:version => 20130226005830) do
 
   create_table "users", :force => true do |t|
     t.string   "provider"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(:version => 20130219002351) do
     t.string   "last_name"
     t.string   "twitter_handle"
     t.string   "profile_image_uri"
+  end
+
+  create_table "venues", :force => true do |t|
+    t.string   "name",                                  :null => false
+    t.string   "street_address",                        :null => false
+    t.string   "city",           :default => "Atlanta", :null => false
+    t.string   "state",          :default => "GA",      :null => false
+    t.string   "zip",                                   :null => false
+    t.text     "notes"
+    t.text     "map_url"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
 end
