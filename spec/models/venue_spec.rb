@@ -30,4 +30,13 @@ describe Venue do
     venue = FactoryGirl.build(:venue, zip: nil)
     expect(venue).to_not be_valid
   end
+
+  it "is not valid without a venue_type" do
+    venue = FactoryGirl.build(:venue, venue_type: nil)
+    expect(venue).to_not be_valid
+  end
+
+  it "should provide the list of available venue types" do
+    expect(Venue::VENUE_TYPES).to eq(%w[meeting social])
+  end
 end

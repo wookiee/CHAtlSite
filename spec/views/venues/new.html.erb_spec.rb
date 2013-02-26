@@ -18,6 +18,7 @@ describe "venues/new" do
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => venues_path, :method => "post" do
+      assert_select "input#venue_venue_type", :name => "venue[venue_type]"
       assert_select "input#venue_name", :name => "venue[name]"
       assert_select "input#venue_street_address", :name => "venue[street_address]"
       assert_select "input#venue_city", :name => "venue[city]"
