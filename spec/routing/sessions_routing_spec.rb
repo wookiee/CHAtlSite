@@ -1,17 +1,15 @@
 require 'spec_helper'
 describe "routing to sessions" do
+  it "routes to #create" do
+    post("/sessions").should route_to("sessions#create")
+  end
+
   it "routes /signin" do
-    expect(:get => "/signin").to route_to(
-      :controller => "sessions",
-      :action => "new"
-    )
+    expect(:get => "/signin").to route_to("sessions#new")
   end
 
   it "routes /signout" do
-    expect(:delete => "/signout").to route_to(
-      :controller => "sessions",
-      :action => "destroy"
-    )
+    expect(:delete => "/signout").to route_to("sessions#destroy")
   end
 
   it "routes /auth/twitter/callback" do

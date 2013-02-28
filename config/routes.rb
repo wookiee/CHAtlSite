@@ -10,6 +10,7 @@ Chatl3::Application.routes.draw do
   get '/auth/failure', to: 'sessions#failure'
   
   # Resources
+  resources :sessions, only: [ :new, :create, :destroy ]
   resources :users
   resources :venues
 
