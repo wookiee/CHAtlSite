@@ -73,6 +73,9 @@ group :test, :development do
   gem "capybara"
   gem 'factory_girl_rails'
 
+  # Use Jasmine
+  gem 'jasmine'
+
   # Use pry as irb replaement
   gem 'pry-rails'
   gem 'pry-doc'
