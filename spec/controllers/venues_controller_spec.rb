@@ -40,6 +40,20 @@ describe VenuesController do
     {}
   end
 
+  def mock_admin
+      user = double("user")
+      user.stub(:admin?).and_return(true)
+      controller.stub(:current_user).and_return(user)
+      user
+  end
+
+  def mock_member
+      user = double("user")
+      user.stub(:admin?).and_return(false)
+      controller.stub(:current_user).and_return(user)
+      user
+  end
+
   describe "GET index" do
     it "assigns all venues as @venues" do
       venue = Venue.create! valid_attributes
@@ -56,115 +70,200 @@ describe VenuesController do
     end
   end
 
-  describe "GET new" do
-    it "assigns a new venue as @venue" do
-      get :new, {}, valid_session
-      assigns(:venue).should be_a_new(Venue)
+  # 
+  # Regular members
+  # 
+
+  describe "as a logged in member" do
+    before(:each) do
+      @user = mock_member
+    end
+
+    describe "GET new" do
+      it "denies access" do
+        get :new, {}, valid_session
+        expect(response).to redirect_to(root_url)
+      end
+
+      it "assigns flash alert" do
+        get :new, {}, valid_session
+        expect(flash[:alert]).to eq("You are not authorized to access this page.")
+      end
+    end
+
+    describe "GET edit" do
+      it "denies access" do
+        venue = Venue.create! valid_attributes
+        get :edit, {:id => venue.to_param}, valid_session
+        expect(response).to redirect_to(root_url)
+      end
+
+      it "assigns flash alert" do
+        venue = Venue.create! valid_attributes
+        get :edit, {:id => venue.to_param}, valid_session
+        expect(flash[:alert]).to eq("You are not authorized to access this page.")
+      end
+    end
+
+    describe "POST create" do
+      it "denies access" do
+        post :create, {:venue => valid_attributes}, valid_session
+        expect(response).to redirect_to(root_url)
+      end
+
+      it "assigns flash alert" do
+        post :create, {:venue => valid_attributes}, valid_session
+        expect(flash[:alert]).to eq("You are not authorized to access this page.")
+      end
+    end
+
+    describe "PUT update" do
+      it "denies access" do
+        venue = Venue.create! valid_attributes
+        put :update, {:id => venue.to_param, :venue => { "name" => "MyString" }}, valid_session
+        expect(response).to redirect_to(root_url)
+      end
+
+      it "assigns flash alert" do
+        venue = Venue.create! valid_attributes
+        put :update, {:id => venue.to_param, :venue => { "name" => "MyString" }}, valid_session
+        expect(flash[:alert]).to eq("You are not authorized to access this page.")
+      end
+    end
+
+    describe "DELETE destroy" do
+      it "denies access" do
+        venue = Venue.create! valid_attributes
+        delete :destroy, {:id => venue.to_param}, valid_session
+        expect(response).to redirect_to(root_url)
+      end
+
+      it "assigns flash alert" do
+        venue = Venue.create! valid_attributes
+        delete :destroy, {:id => venue.to_param}, valid_session
+        expect(flash[:alert]).to eq("You are not authorized to access this page.")
+      end
     end
   end
 
-  describe "GET edit" do
-    it "assigns the requested venue as @venue" do
-      venue = Venue.create! valid_attributes
-      get :edit, {:id => venue.to_param}, valid_session
-      assigns(:venue).should eq(venue)
-    end
-  end
+  # 
+  # Administrators
+  # 
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Venue" do
-        expect {
-          post :create, {:venue => valid_attributes}, valid_session
-        }.to change(Venue, :count).by(1)
-      end
-
-      it "assigns a newly created venue as @venue" do
-        post :create, {:venue => valid_attributes}, valid_session
-        assigns(:venue).should be_a(Venue)
-        assigns(:venue).should be_persisted
-      end
-
-      it "redirects to the created venue" do
-        post :create, {:venue => valid_attributes}, valid_session
-        response.should redirect_to(Venue.last)
-      end
+  describe "as a logged in admin" do
+    before(:each) do
+      @user = mock_admin
     end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved venue as @venue" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Venue.any_instance.stub(:save).and_return(false)
-        post :create, {:venue => { "name" => "invalid value" }}, valid_session
+    describe "GET new" do
+      it "assigns a new venue as @venue" do
+        get :new, {}, valid_session
         assigns(:venue).should be_a_new(Venue)
       end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Venue.any_instance.stub(:save).and_return(false)
-        post :create, {:venue => { "name" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
     end
-  end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested venue" do
-        venue = Venue.create! valid_attributes
-        # Assuming there are no other venues in the database, this
-        # specifies that the Venue created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Venue.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
-        put :update, {:id => venue.to_param, :venue => { "name" => "MyString" }}, valid_session
-      end
-
+    describe "GET edit" do
       it "assigns the requested venue as @venue" do
         venue = Venue.create! valid_attributes
-        put :update, {:id => venue.to_param, :venue => valid_attributes}, valid_session
+        get :edit, {:id => venue.to_param}, valid_session
         assigns(:venue).should eq(venue)
-      end
-
-      it "redirects to the venue" do
-        venue = Venue.create! valid_attributes
-        put :update, {:id => venue.to_param, :venue => valid_attributes}, valid_session
-        response.should redirect_to(venue)
       end
     end
 
-    describe "with invalid params" do
-      it "assigns the venue as @venue" do
-        venue = Venue.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Venue.any_instance.stub(:save).and_return(false)
-        put :update, {:id => venue.to_param, :venue => { "name" => "invalid value" }}, valid_session
-        assigns(:venue).should eq(venue)
+    describe "POST create" do
+      describe "with valid params" do
+        it "creates a new Venue" do
+          expect {
+            post :create, {:venue => valid_attributes}, valid_session
+          }.to change(Venue, :count).by(1)
+        end
+
+        it "assigns a newly created venue as @venue" do
+          post :create, {:venue => valid_attributes}, valid_session
+          assigns(:venue).should be_a(Venue)
+          assigns(:venue).should be_persisted
+        end
+
+        it "redirects to the created venue" do
+          post :create, {:venue => valid_attributes}, valid_session
+          response.should redirect_to(Venue.last)
+        end
       end
 
-      it "re-renders the 'edit' template" do
-        venue = Venue.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Venue.any_instance.stub(:save).and_return(false)
-        put :update, {:id => venue.to_param, :venue => { "name" => "invalid value" }}, valid_session
-        response.should render_template("edit")
+      describe "with invalid params" do
+        it "assigns a newly created but unsaved venue as @venue" do
+          # Trigger the behavior that occurs when invalid params are submitted
+          Venue.any_instance.stub(:save).and_return(false)
+          post :create, {:venue => { "name" => "invalid value" }}, valid_session
+          assigns(:venue).should be_a_new(Venue)
+        end
+
+        it "re-renders the 'new' template" do
+          # Trigger the behavior that occurs when invalid params are submitted
+          Venue.any_instance.stub(:save).and_return(false)
+          post :create, {:venue => { "name" => "invalid value" }}, valid_session
+          response.should render_template("new")
+        end
       end
     end
-  end
 
-  describe "DELETE destroy" do
-    it "destroys the requested venue" do
-      venue = Venue.create! valid_attributes
-      expect {
+    describe "PUT update" do
+      describe "with valid params" do
+        it "updates the requested venue" do
+          venue = Venue.create! valid_attributes
+          # Assuming there are no other venues in the database, this
+          # specifies that the Venue created on the previous line
+          # receives the :update_attributes message with whatever params are
+          # submitted in the request.
+          Venue.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
+          put :update, {:id => venue.to_param, :venue => { "name" => "MyString" }}, valid_session
+        end
+
+        it "assigns the requested venue as @venue" do
+          venue = Venue.create! valid_attributes
+          put :update, {:id => venue.to_param, :venue => valid_attributes}, valid_session
+          assigns(:venue).should eq(venue)
+        end
+
+        it "redirects to the venue" do
+          venue = Venue.create! valid_attributes
+          put :update, {:id => venue.to_param, :venue => valid_attributes}, valid_session
+          response.should redirect_to(venue)
+        end
+      end
+
+      describe "with invalid params" do
+        it "assigns the venue as @venue" do
+          venue = Venue.create! valid_attributes
+          # Trigger the behavior that occurs when invalid params are submitted
+          Venue.any_instance.stub(:save).and_return(false)
+          put :update, {:id => venue.to_param, :venue => { "name" => "invalid value" }}, valid_session
+          assigns(:venue).should eq(venue)
+        end
+
+        it "re-renders the 'edit' template" do
+          venue = Venue.create! valid_attributes
+          # Trigger the behavior that occurs when invalid params are submitted
+          Venue.any_instance.stub(:save).and_return(false)
+          put :update, {:id => venue.to_param, :venue => { "name" => "invalid value" }}, valid_session
+          response.should render_template("edit")
+        end
+      end
+    end
+
+    describe "DELETE destroy" do
+      it "destroys the requested venue" do
+        venue = Venue.create! valid_attributes
+        expect {
+          delete :destroy, {:id => venue.to_param}, valid_session
+        }.to change(Venue, :count).by(-1)
+      end
+
+      it "redirects to the venues list" do
+        venue = Venue.create! valid_attributes
         delete :destroy, {:id => venue.to_param}, valid_session
-      }.to change(Venue, :count).by(-1)
-    end
-
-    it "redirects to the venues list" do
-      venue = Venue.create! valid_attributes
-      delete :destroy, {:id => venue.to_param}, valid_session
-      response.should redirect_to(venues_url)
+        response.should redirect_to(venues_url)
+      end
     end
   end
-
 end
