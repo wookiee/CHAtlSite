@@ -18,6 +18,3 @@
 # Prevent private configuration setting from getting exposed to verion control
 /config/database.yml
 /config/application.yml
-
-# Ignore Bundler binstubs dir
-bin/

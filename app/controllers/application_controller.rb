@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
   # Cancan ensure authorization
   # check_authorization
 
+  # Cancan workaround for strong parameters issue
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
   # Cancan rescue from authorization exception
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message

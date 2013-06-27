@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   gravtastic
 
   ROLES = %w[admin member]
-  attr_accessible :provider, :uid, :first_name, :last_name, :email
 
   def admin?
     self.role == 'admin'

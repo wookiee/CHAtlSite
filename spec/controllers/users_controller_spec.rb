@@ -24,7 +24,7 @@ describe UsersController do
   # User. As you add validations to User, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "provider" => "" }
+    { "provider" => "MyString" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -108,9 +108,9 @@ describe UsersController do
         user = User.create! valid_attributes
         # Assuming there are no other users in the database, this
         # specifies that the User created on the previous line
-        # receives the :update_attributes message with whatever params are
+        # receives the :update message with whatever params are
         # submitted in the request.
-        User.any_instance.should_receive(:update_attributes).with({ "provider" => "" })
+        User.any_instance.should_receive(:update).with({ "provider" => "" })
         put :update, {:id => user.to_param, :user => { "provider" => "" }}, valid_session
       end
 

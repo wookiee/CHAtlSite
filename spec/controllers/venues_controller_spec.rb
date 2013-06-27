@@ -213,9 +213,9 @@ describe VenuesController do
           venue = Venue.create! valid_attributes
           # Assuming there are no other venues in the database, this
           # specifies that the Venue created on the previous line
-          # receives the :update_attributes message with whatever params are
+          # receives the :update message with whatever params are
           # submitted in the request.
-          Venue.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
+          Venue.any_instance.should_receive(:update).with({ "name" => "MyString" })
           put :update, {:id => venue.to_param, :venue => { "name" => "MyString" }}, valid_session
         end
 
