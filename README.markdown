@@ -1,7 +1,7 @@
 CocoaHeads Atlanta Web Site
 ==========================
 
-Welcome to the CocoaHeads Atlanta web site project. The site is currently based on [Ruby on Rails](http://rubyonrails.org) version 3.2.x.
+Welcome to the CocoaHeads Atlanta web site project. The site is based on [Ruby on Rails](http://rubyonrails.org) version 4.0.0.
 
 This is a ground up rebuild of the current [cocoaheadsatlanta.org](http://cocoaheadsatlanta.org) site. 
 
