@@ -26,6 +26,7 @@ class SessionsController < ApplicationController
 
   # GET /auth/failure
   def failure
+    redirect_to root_url, notice: "Access denied!"
   end
 
   # GET /openid_url
