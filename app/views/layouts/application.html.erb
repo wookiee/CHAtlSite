@@ -25,13 +25,7 @@
         </div>
       </div>
     </div>
-    <div id="nav_bar_container">
-      <ul id="nav_bar">
-        <li><%= link_to "Meetings", "#" %></li>
-        <li><%= link_to "Venues", venues_path %></li>
-      </ul>
-      <div class="separator"></div>
-    </div>
+    <%= render :partial => 'shared/navbar' %>
     <div id="page_content">
       <table class="two_column_layout">
         <tr>

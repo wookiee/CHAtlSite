@@ -1,0 +1,9 @@
+<div id="nav_bar_container">
+  <ul id="nav_bar">
+    <li><%= link_to "Meetings", "#" %></li>
+    <% if can? :edit, Venue -%>
+    <li><%= link_to "Venues", venues_path %></li>
+    <% end -%>
+  </ul>
+  <div class="separator"></div>
+</div>
