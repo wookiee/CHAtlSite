@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20130226072231) do
     t.string   "uid"
     t.string   "first_name"
     t.string   "email"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "role"
     t.string   "last_name"
     t.string   "twitter_handle"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20130226072231) do
     t.string   "zip",                                null: false
     t.text     "notes"
     t.text     "map_url"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "venue_type",     default: "meeting", null: false
   end
 
