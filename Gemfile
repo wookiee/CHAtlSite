@@ -54,8 +54,8 @@ gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 
-# Use CanCan for authorization
-gem 'cancan'
+# Use CanCanCommunity for authorization
+gem 'cancancan', '~> 1.8'
 
 # Use Gravtastic for globally recongnized avatars (http://en.gravatar.com/)
 gem 'gravtastic'
@@ -70,7 +70,7 @@ end
 # For use in test and development only
 group :test, :development do
   # Use RSpec
-  gem "rspec-rails", "~> 2.6"
+  gem 'rspec-rails', '~> 3.0.0'
   gem "capybara"
   gem 'factory_girl_rails'
 
