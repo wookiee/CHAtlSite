@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "venues/new" do
+describe "venues/new", :type => :view do
   before(:each) do
     assign(:venue, stub_model(Venue,
       :name => "MyString",

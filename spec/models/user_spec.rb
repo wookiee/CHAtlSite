@@ -41,7 +41,7 @@ AUTH_HASHES = {
   }
 }
 
-describe User do
+describe User, :type => :model do
   describe "self.create_with_omniauth" do
     describe "using Twitter" do
       it "should set provider" do
@@ -162,7 +162,7 @@ describe User do
 
   it "should respond to gravatar_url" do
     user = FactoryGirl.build(:user)
-    user.should respond_to(:gravatar_url)
+    expect(user).to respond_to(:gravatar_url)
   end
 
   it "should provide profile_image convenience from provider" do
@@ -172,7 +172,7 @@ describe User do
 
   it "should provide profile_image convenience from gravatar" do
     user = User.new
-    user.stub(:gravatar_url).and_return("MyString")
+    allow(user).to receive(:gravatar_url).and_return("MyString")
     expect(user.profile_image).to eq("MyString")
   end
 end

@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe "users/show.html.erb" do
+describe "users/show.html.erb", :type => :view do
 
 end

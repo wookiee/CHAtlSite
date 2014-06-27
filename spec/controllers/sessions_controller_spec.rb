@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SessionsController do
+describe SessionsController, :type => :controller do
   describe "POST create" do
     before(:each) do
       request.env["omniauth.auth"] = { "provider" =>  "MyString", "uid" => "MyString" }
@@ -23,8 +23,8 @@ describe SessionsController do
     describe "with new user" do
       before(:each) do
         @user_double = double("User")
-        @user_double.stub(:id) { 2 }
-        User.should_receive(:create_with_omniauth).and_return(@user_double)
+        allow(@user_double).to receive(:id) { 2 }
+        expect(User).to receive(:create_with_omniauth).and_return(@user_double)
       end
 
       it "should assign session[:user_id]" do

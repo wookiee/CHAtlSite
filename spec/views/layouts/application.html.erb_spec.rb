@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "layouts/application.html.erb" do
+describe "layouts/application.html.erb", :type => :view do
   # 
   # Administrators
   #

@@ -71,6 +71,7 @@ end
 group :test, :development do
   # Use RSpec
   gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-activemodel-mocks'
   gem "capybara"
   gem 'factory_girl_rails'
 

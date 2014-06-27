@@ -1,7 +1,7 @@
 require 'spec_helper'
-describe "routing to sessions" do
+describe "routing to sessions", :type => :routing do
   it "routes to #create" do
-    post("/sessions").should route_to("sessions#create")
+    expect(post("/sessions")).to route_to("sessions#create")
   end
 
   it "routes /signin" do

@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
   # check_authorization
 
   # Cancan workaround for strong parameters issue
-  before_action do
-    resource = controller_name.singularize.to_sym
-    method = "#{resource}_params"
-    params[resource] &&= send(method) if respond_to?(method, true)
-  end
+  # before_action do
+  #   resource = controller_name.singularize.to_sym
+  #   method = "#{resource}_params"
+  #   params[resource] &&= send(method) if respond_to?(method, true)
+  # end
 
   # Cancan rescue from authorization exception
   rescue_from CanCan::AccessDenied do |exception|

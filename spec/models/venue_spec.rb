@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Venue do
+describe Venue, :type => :model do
   it "is valid with valid attributes" do
     venue = FactoryGirl.build(:venue)
     expect(venue).to be_valid
