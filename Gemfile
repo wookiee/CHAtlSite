@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.2'
+gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -42,9 +42,6 @@ gem 'spring',        group: :development
 # App specific gems
 #
 
-# Use Phusion Passenger as the web server
-gem 'passenger'
-
 # Use SettingsLogic for YAML private config settings
 gem 'settingslogic'
 
@@ -70,6 +67,7 @@ end
 # For use in test and development only
 group :test, :development do
   # Use RSpec
+  gem 'spring-commands-rspec', '~> 1.0.2'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'rspec-activemodel-mocks'
   gem "capybara"
