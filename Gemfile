@@ -42,9 +42,6 @@ gem 'spring',        group: :development
 # App specific gems
 #
 
-# Use Phusion Passenger as the web server
-gem 'passenger'
-
 # Use SettingsLogic for YAML private config settings
 gem 'settingslogic'
 
